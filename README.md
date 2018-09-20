@@ -2,8 +2,11 @@
 Simple node.js server for mobile app. 
 
 # API
-
-
+````
+Lines prefixed with:	Are sent from:		To:
+    <                  	client			    	server
+    >		             		server		  	  	connecting client
+````
 Create User  
 ----------------------------
 Need to create user in database.  
@@ -15,9 +18,9 @@ Need to create user in database.
 ```  
  
 where:  
- < login > - existed user login  
- < password > - existed user password  
- < boolean > - true/false  
+ _< login >_ - existed user login  
+ _< password >_ - existed user password  
+ _< boolean >_ - true/false  
   
 **Example:**  
 ```js
@@ -37,9 +40,9 @@ Need to find existed user in database.
 ```  
    
 where:  
- < login > - existed user login  
- < password > - existed user password  
- < boolean > - true/false  
+ _< login >_ - existed user login  
+ _< password >_ - existed user password  
+ _< boolean >_ - true/false  
     
 **Example:**  
 ```js
