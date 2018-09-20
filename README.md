@@ -2,6 +2,9 @@
 Simple node.js server for mobile app. 
 
 # API
+Syntax Notes  
+----------------------------
+The examples below use these syntax conventions:  
 ````
 Lines prefixed with:  |  Are sent from:	 |         To:              |
         <                  client                server
