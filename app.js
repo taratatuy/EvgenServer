@@ -26,10 +26,10 @@ app.get('/getUser', (req, res) => {
     },
     (err, data) => {
       if (`${data}` === '') {
-        console.log(`${Date.now} false GET: ${req.query}`);
+        console.log(`false GET: `, req.query);
         return res.status(400).send('{ getUser: false }');
       } else {
-        console.log(`${Date.now} true GET: ${req.query}`);
+        console.log(`true GET: `, req.query);
         return res.status(200).send('{ getUser: true }');
       }
     }
@@ -42,11 +42,11 @@ app.get('/createUser', (req, res) => {
     password: req.query.password
   })
     .then(() => {
-      console.log(`${Date.now} true CREATE: ${req.query}`);
+      console.log(`true CREATE: `, req.query);
       res.status(201).send('{ createUser: true }');
     })
     .catch(() => {
-      console.log(`${Date.now} false CREATE: ${req.query}`);
+      console.log(`false CREATE: `, req.query);
       res.status(400).send('{ createUser: false }');
     });
 });

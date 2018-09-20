@@ -9,14 +9,14 @@ Simple node.js server for mobile app.
 The examples below use these syntax conventions:
 
 ```
-Lines prefixed with:  |  Are sent from:	 |         To:            |
+Lines prefixed with:  |  Are sent from:	 |         To:         |
         <                  client                server
         >                  server            connecting client
 ```
 
 ## Create User
 
-Need to create user in database.
+Need to create user on database.
 
 ```js
 < GET http://<hostAddress>/createUser/?login=<login>&password=<password>
@@ -40,7 +40,7 @@ where:
 
 ## Get User
 
-Need to find existed user in database.
+Need to find exist user on database.
 
 ```js
 < GET http://<hostAddress>/getUser/?login=<login>&password=<password>
@@ -50,10 +50,10 @@ Need to find existed user in database.
 
 where:  
  _< hostAddress >_ - address of computer hosting this app  
- _< login >_ - existed user login  
- _< password >_ - existed user password  
- _< boolean >_ - true/false  
-  
+ _< login >_ - exist user login  
+ _< password >_ - exist user password  
+ _< boolean >_ - true/false
+
 **Example:**
 
 ```js
