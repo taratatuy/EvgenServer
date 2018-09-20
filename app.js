@@ -13,11 +13,12 @@ database()
     console.log('Database Promise Error!');
   });
 
+// uses and sets
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
-// express
+// routers
 app.get('/getUser', (req, res) => {
   console.log(req.query);
   const { login, password } = req.query;
