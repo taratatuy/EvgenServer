@@ -18,8 +18,8 @@ Need to create user in database.
 ```  
  
 where:  
- _< login >_ - existed user login  
- _< password >_ - existed user password  
+ _< login >_ - new user login  
+ _< password >_ - new user password  
  _< boolean >_ - true/false  
   
 **Example:**  
