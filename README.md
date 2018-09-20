@@ -3,7 +3,7 @@ Simple node.js server for mobile app.
 
 # API
 
-- **Get User**
+- **Get User**  
 Need to find user in database.
 
 ```js
