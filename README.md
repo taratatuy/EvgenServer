@@ -4,8 +4,8 @@ Simple node.js server for mobile app.
 # API
 
 
-h1 Create User  
-=======================
+Create User  
+----------------------------
 Need to create user in database.  
   
 ```js
@@ -26,8 +26,8 @@ where:
 > { createUser: true }
 ```
   
-h1 Get User 
-=======================
+Get User 
+----------------------------
 Need to find existed user in database.  
   
 ```js
