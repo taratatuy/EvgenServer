@@ -3,9 +3,9 @@ Simple node.js server for mobile app.
 
 # API
 ````
-Lines prefixed with:	Are sent from:		To:
-    <                     client               server
-    >                     server               connecting client
+Lines prefixed with:  |  Are sent from:	 |         To:
+        <             |    client        |       server
+        >             |    server        |       connecting client
 ````
 Create User  
 ----------------------------
