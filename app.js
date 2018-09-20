@@ -43,12 +43,10 @@ app.get('/createUser', (req, res) => {
     password: req.query.password
   })
     .then(() => {
-      res.status(201);
-      res.send('{ createUser: true }');
+      res.status(201).send('{ createUser: true }');
     })
     .catch(() => {
-      res.status(400);
-      res.send('{ createUser: false }');
+      res.status(400).send('{ createUser: false }');
     });
 });
 
