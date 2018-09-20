@@ -5,7 +5,7 @@ Simple node.js server for mobile app.
 ````
 Lines prefixed with:  |  Are sent from:	 |         To:              |
         <                  client                server
-        >                  server                connecting client
+        >                  server            connecting client
 ````
 Create User  
 ----------------------------
