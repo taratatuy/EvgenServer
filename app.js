@@ -1,7 +1,6 @@
 const express = require('express');
 const database = require('./database');
 const bodyParser = require('body-parser');
-const path = require('path');
 const config = require('./config');
 const UserModel = require('./models/user');
 const app = express();
@@ -15,12 +14,10 @@ database()
 
 // uses and sets
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
 // routers
 app.get('/getUser', (req, res) => {
-  console.log(req.query);
   const { login, password } = req.query;
   UserModel.find(
     {
@@ -29,8 +26,10 @@ app.get('/getUser', (req, res) => {
     },
     (err, data) => {
       if (`${data}` === '') {
+        console.log(`${Date.now} false GET: ${req.query}`);
         return res.status(400).send('{ getUser: false }');
       } else {
+        console.log(`${Date.now} true GET: ${req.query}`);
         return res.status(200).send('{ getUser: true }');
       }
     }
@@ -43,9 +42,11 @@ app.get('/createUser', (req, res) => {
     password: req.query.password
   })
     .then(() => {
+      console.log(`${Date.now} true CREATE: ${req.query}`);
       res.status(201).send('{ createUser: true }');
     })
     .catch(() => {
+      console.log(`${Date.now} false CREATE: ${req.query}`);
       res.status(400).send('{ createUser: false }');
     });
 });
