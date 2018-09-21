@@ -28,7 +28,7 @@ where:
  _< hostAddress >_ - address of computer hosting this app  
  _< login >_ - new user login  
  _< password >_ - new user password  
- _< boolean >_ - true/false
+ _< boolean >_ - true/false - certificate of success operation
 
 **Example:**
 
@@ -52,7 +52,7 @@ where:
  _< hostAddress >_ - address of computer hosting this app  
  _< login >_ - exist user login  
  _< password >_ - exist user password  
- _< boolean >_ - true/false
+ _< boolean >_ - true/false - certificate of success operation
 
 **Example:**
 
@@ -74,7 +74,7 @@ Need to create new text on database.
 
 POST data:
 
-```json
+```js
 {
   "head": <textHead>,
   "body": <textBody>,
@@ -84,7 +84,7 @@ POST data:
 
 where:  
 _< hostAddress >_ - address of computer hosting this app  
-_< boolean >_ - true/false  
+_< boolean >_ - true/false - certificate of success operation  
 _< textHead >_ - text header  
 _< textBody >_ - text body  
 _< textAuthor >_ - text author (user login)
@@ -121,7 +121,7 @@ Need to find arrey fo exist text by author.
 
 If author exists
 
-```json
+```js
 > [{
    "textHead":"<textHead>",
    "textBody":"<textBody>",
@@ -141,6 +141,7 @@ _< author >_ - text author (user login) which texts you need
 _< textHead >_ - text header  
 _< textBody >_ - text body  
 _< createdTime >_ - time of creation current text
+_< boolean >_ - true/false - certificate of success operation  
 
 **Example:**
 
