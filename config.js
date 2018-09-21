@@ -6,6 +6,6 @@ dotenv.config({ path: root('.env') });
 
 module.exports = {
   PORT: process.env.PORT || 3000,
-  MONGO_URL: process.env.MONGO_URL || 'mongodb://localhost:27017/EvgenUsers',
+  MONGO_URL: process.env.MONGO_URL || 'mongodb://localhost:27017/EvgenApp',
   IS_PRODUCTION: process.env.NODE_ENV === 'production'
 };
