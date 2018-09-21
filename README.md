@@ -113,7 +113,7 @@ Response:
 
 ## Get Text
 
-Need to find arrey fo exist text by author.
+Need to find array fo exist text by author.
 
 ```js
 < GET http://<hostAddress>/getText/<author>
