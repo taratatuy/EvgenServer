@@ -131,7 +131,7 @@ If author exists
 
 If author not exists
 
-```JSON
+```js
 > { "getText": <boolean> }
 ```
 
