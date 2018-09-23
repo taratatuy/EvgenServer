@@ -1,26 +1,28 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const text = new Schema(
+const user = new Schema(
   {
-    textHead: {
+    login: {
+      type: String,
+      unique: true,
+      required: true
+    },
+    password: {
       type: String,
       required: true
     },
-    textBody: {
+    email: {
       type: String,
+      unique: true,
       required: true
-    },
-    textAuthor: {
-      type: String
-      // required: true
     }
   },
   { timestamps: true }
 );
 
-text.set('toJSON', {
+user.set('toJSON', {
   virtuals: true
 });
 
-module.exports = mongoose.model('TextModel', text);
+module.exports = mongoose.model('UserModel', user);

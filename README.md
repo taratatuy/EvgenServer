@@ -19,21 +19,22 @@ Lines prefixed with:  |  Are sent from:	 |         To:         |
 Need to create user on database.
 
 ```js
-< GET http://<hostAddress>/createUser/?login=<login>&password=<password>
+< GET http://<hostAddress>/user/create/?login=<login>&password=<password>&email=<email>
 
 > { createUser: <boolean> }
 ```
 
 where:  
  _< hostAddress >_ - address of computer hosting this app  
- _< login >_ - new user login  
+ _< login >_ - unique new user login  
  _< password >_ - new user password  
+ _< email >_ - unique new user email  
  _< boolean >_ - true/false - certificate of success operation
 
 **Example:**
 
 ```js
-< GET http://localhost/createUser/?login=Alex&password=qwerty
+< GET http://localhost/user/create/?login=Alex&password=qwerty&email=Alex@gmail.com
 
 > { createUser: true }
 ```
@@ -43,7 +44,7 @@ where:
 Need to find exist user on database.
 
 ```js
-< GET http://<hostAddress>/getUser/?login=<login>&password=<password>
+< GET http://<hostAddress>/user/get/?login=<login>&password=<password>
 
 > { getUser: <boolean> }
 ```
@@ -57,7 +58,7 @@ where:
 **Example:**
 
 ```js
-< GET http://localhost/getUser/?login=Alex&password=qwerty
+< GET http://localhost/user/get/?login=Alex&password=qwerty
 
 > { getUser: true }
 ```
@@ -67,7 +68,7 @@ where:
 Need to create new text on database.
 
 ```js
-< POST http://<hostAddress>/createText
+< POST http://<hostAddress>/text/create
 
 > { "createText": <boolean> }
 ```
@@ -78,21 +79,21 @@ POST data:
 {
   "head": <textHead>,
   "body": <textBody>,
-  "author": <textAuthor>
+  "login": <textAuthor>
 }
 ```
 
 where:  
 _< hostAddress >_ - address of computer hosting this app  
 _< boolean >_ - true/false - certificate of success operation  
-_< textHead >_ - text header  
-_< textBody >_ - text body  
-_< textAuthor >_ - text author (user login)
+_< head >_ - text header  
+_< body >_ - text body  
+_< login >_ - unique user login
 
 **Example:**
 
 ```js
-< POST http://localhost/createText
+< POST http://localhost/text/create
 ```
 
 POST data:
@@ -101,7 +102,7 @@ POST data:
 {
   "head": "Here my Headline",
   "body": "Here my Body. I am typing some text here",
-  "author": "Alex"
+  "login": "Alex"
 }
 ```
 
@@ -116,15 +117,15 @@ Response:
 Need to find array of exist texts by author.
 
 ```js
-< GET http://<hostAddress>/getText/<author>
+< GET http://<hostAddress>/text/get/?login=<login>
 ```
 
 If author exists
 
 ```js
 > [{
-   "textHead":"<textHead>",
-   "textBody":"<textBody>",
+   "head":"<textHead>",
+   "body":"<textBody>",
    "textCreatedAt":"<createdTime>"
   }]
 ```
@@ -137,16 +138,16 @@ If author not exists
 
 where:  
 _< hostAddress >_ - address of computer hosting this app  
-_< author >_ - text author (user login) which texts you need  
-_< textHead >_ - text header  
-_< textBody >_ - text body  
-_< createdTime >_ - time of creation current text
-_< boolean >_ - true/false - certificate of success operation  
+_< login >_ - unique user login which texts you need  
+_< head >_ - text header  
+_< body >_ - text body  
+_< createdTime >_ - time of creation current text  
+_< boolean >_ - true/false - certificate of success operation
 
 **Example:**
 
 ```js
-< GET http://localhost/getText/Alex
+< GET http://localhost/text/get/?login=Alex
 
-> [{ "textHead":"Here my Headline","textBody":"Here my Body. I am typing some text here","textCreateDate":"2018-09-21T09:21:03.365Z" }]
+> [{ "head":"Here my Headline","body":"Here my Body. I am typing some text here","textCreateDate":"2018-09-21T09:21:03.365Z" }]
 ```
