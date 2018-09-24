@@ -13,11 +13,11 @@ router.post('/create', (req, res) => {
     login: req.body.login
   })
     .then(() => {
-      console.log(`true TEXT_CREATE: `, req.body);
+      console.log(req.ip, `true TEXT_CREATE: `, req.body);
       res.status(201).json({ createText: true });
     })
     .catch(() => {
-      console.log(`false TEXT_CREATE: `, req.body);
+      console.log(req.ip, `false TEXT_CREATE: `, req.body);
       res.status(500).json({ createText: false });
     });
 });
@@ -29,10 +29,10 @@ router.get('/get', (req, res) => {
     },
     (err, data) => {
       if (`${data}` === '') {
-        console.log(`false TEXT_GET: `, req.query.login);
+        console.log(req.ip, `false TEXT_GET: `, req.query.login);
         return res.status(400).json({ getText: false });
       } else {
-        console.log(`true TEXT_GET: `, req.query.login);
+        console.log(req.ip, `true TEXT_GET: `, req.query.login);
         var texts = [];
         data.forEach(post => {
           texts.push({

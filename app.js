@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // routes
 app.get('/', (req, res) => {
+  console.log(req.ip, 'versoin check');
   res.send(`-v: ${package.version} <br> Last reload: ${startDate}`);
 });
 

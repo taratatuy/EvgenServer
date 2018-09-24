@@ -9,11 +9,11 @@ router.get('/create', (req, res) => {
     email: req.query.email
   })
     .then(() => {
-      console.log(`true USER_CREATE: `, req.query);
+      console.log(req.ip, `true USER_CREATE: `, req.query);
       res.status(201).json({ createUser: true });
     })
     .catch(() => {
-      console.log(`false USER_CREATE: `, req.query);
+      console.log(req.ip, `false USER_CREATE: `, req.query);
       res.status(400).json({ createUser: false });
     });
 });
@@ -27,10 +27,10 @@ router.get('/get', (req, res) => {
     },
     (err, data) => {
       if (`${data}` === '') {
-        console.log(`false USER_GET: `, req.query);
+        console.log(req.ip, `false USER_GET: `, req.query);
         return res.status(400).json({ getUser: false });
       } else {
-        console.log(`true USER_GET: `, req.query);
+        console.log(req.ip, `true USER_GET: `, req.query);
         return res.status(200).json({ getUser: true });
       }
     }
