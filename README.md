@@ -2,7 +2,7 @@
 
 Simple node.js server for mobile app.
 
-Current version and last reload you can find by pass 'http://<hostAddress>/'
+Current version and last reload you can find by pass ```http://<hostAddress>/```
 
 # API
 
