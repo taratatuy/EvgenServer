@@ -1,6 +1,7 @@
 const express = require('express');
 const database = require('./database');
 const routes = require('./routes');
+const TokensValidation = require('./routes/middleware/TokensValidation');
 const config = require('./config');
 const package = require('./package.json');
 const app = express();
@@ -24,6 +25,6 @@ app.get('/', (req, res) => {
 });
 
 app.use('/user', routes.Users);
-app.use('/text', routes.Texts);
+app.use('/text', TokensValidation, routes.Texts);
 
 app.listen(config.PORT, console.log(`Listening on port ${config.PORT}. . .`));

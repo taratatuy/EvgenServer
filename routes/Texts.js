@@ -7,10 +7,11 @@ router.get('/createText', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
+  const { head, body, login } = req.body;
   models.TextModel.create({
-    head: req.body.head,
-    body: req.body.body,
-    login: req.body.login
+    head: head,
+    body: body,
+    login: login.toString().toLowerCase()
   })
     .then(() => {
       console.log(req.ip, `true TEXT_CREATE: `, req.body);
@@ -25,7 +26,7 @@ router.post('/create', (req, res) => {
 router.get('/get', (req, res) => {
   models.TextModel.find(
     {
-      login: req.query.login
+      login: req.query.login.toString().toLowerCase()
     },
     (err, data) => {
       if (`${data}` === '') {

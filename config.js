@@ -7,5 +7,19 @@ dotenv.config({ path: root('.env') });
 module.exports = {
   PORT: process.env.PORT || 3000,
   MONGO_URL: process.env.MONGO_URL || 'mongodb://localhost:27017/EvgenApp',
-  IS_PRODUCTION: process.env.NODE_ENV === 'production'
+  IS_PRODUCTION: process.env.NODE_ENV === 'production',
+
+  jwt: {
+    secret: process.env.SECRET || 'Evgen tokens',
+    tokens: {
+      access: {
+        type: 'access',
+        expiresIn: '2m'
+      },
+      refresh: {
+        type: 'refresh',
+        expiresIn: '24h'
+      }
+    }
+  }
 };
