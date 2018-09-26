@@ -42,7 +42,7 @@ router.get('/get', (req, res) => {
             textCreatedAt: post.createdAt
           });
         });
-        res.setHeader('Content-Type', 'application/json');
+        // res.setHeader('Content-Type', 'application/json');
         return res.status(200).json(texts);
       }
     }
