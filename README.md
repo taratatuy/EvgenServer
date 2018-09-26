@@ -36,11 +36,11 @@ Every request labeled this mark is required authorization header. You need to in
 Header:
 
 ```js
-< "Authorization": "<accessToken>"
+"Authorization": "<accessToken>"
 ```
 
 where:  
- _< accessToken >_ - access token for current session
+ _< accessToken >_ - current access token for session
 
 If your token expired and you need to generate new access and refresh tokens:
 
@@ -62,8 +62,8 @@ This method required for getting tokens via current refresh token without user a
 < POST http://<hostAddress>/user/refresh-tokens
 
 > {
-    "accessToken": "<accessToken>",
-    "refreshToken":"<refreshToken>"
+    "accessToken": "<newAccessToken>",
+    "refreshToken":"<newRefreshToken>"
   }
 ```
 
@@ -77,8 +77,9 @@ POST data:
 
 where:  
  _< hostAddress >_ - address of computer hosting this app  
- _< accessToken >_ - access token for current session  
- _< refreshToken >_ - refresh token for current session
+ _< newAccessToken >_ - new access token for current session  
+ _< newRefreshToken >_ - new refresh token for generation next couple  
+ _< refreshToken >_ - previous refresh token
 
 **Example:**
 
@@ -165,11 +166,9 @@ where:
   }
 ```
 
-## Create Text
+## Create Text `Access by access token`
 
 Need to create new text on database.
-
-`Access by access token`
 
 ```js
 < POST http://<hostAddress>/text/create
@@ -216,11 +215,9 @@ Response:
 > { "createText": true }
 ```
 
-## Get Text
+## Get Text `Access by access token`
 
 Need to find array of exist texts by author.
-
-`Access by access token`
 
 ```js
 < GET http://<hostAddress>/text/get/?login=<login>
