@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const uuid = require('uuid/v4');
 const { tokens, secret } = require('./config').jwt;
 const models = require('./models');
+const channel = require('./EventChannel.js');
 
 const generateAccessToken = userId => {
   const payload = {
@@ -31,7 +32,8 @@ const replaceDbRefreshToken = (tokenId, userId) =>
     .exec()
     .then(() => {
       models.TokenModel.create({ tokenId, userId });
-      console.log('UPDATE_TOKENS: TRUE');
+      // console.log('UPDATE_TOKENS: TRUE');
+      channel.emit('ConsoleText', 'UPDATE_TOKENS: TRUE');
     });
 
 const updateTokens = userId => {
@@ -70,7 +72,8 @@ const refreshTokens = (req, res) => {
     })
     .then(tokens => {
       res.json(tokens);
-      console.log('REFRESH_TOKENS: TRUE');
+      // console.log('REFRESH_TOKENS: TRUE');
+      channel.emit('ConsoleText', 'REFRESH_TOKENS: TRUE');
     })
     .catch(err => res.status(400));
 };

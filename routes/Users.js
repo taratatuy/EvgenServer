@@ -1,6 +1,7 @@
 const express = require('express');
 const models = require('../models');
 const auth = require('../auth');
+const channel = require('../EventChannel.js');
 const router = express.Router();
 
 router.get('/create', (req, res) => {
@@ -10,11 +11,19 @@ router.get('/create', (req, res) => {
     email: req.query.email.toString().toLowerCase()
   })
     .then(() => {
-      console.log(req.ip, `true USER_CREATE: `, req.query);
+      // console.log(req.ip, `true USER_CREATE: `, req.query);
+      channel.emit(
+        'ConsoleText',
+        req.ip + `  true USER_CREATE:  ` + JSON.stringify(req.query)
+      );
       res.status(201).json({ createUser: true });
     })
     .catch(() => {
-      console.log(req.ip, `false USER_CREATE: `, req.query);
+      // console.log(req.ip, `false USER_CREATE: `, req.query);
+      channel.emit(
+        'ConsoleText',
+        req.ip + `  false USER_CREATE:  ` + JSON.stringify(req.query)
+      );
       res.status(400).json({ createUser: false });
     });
 });
@@ -28,10 +37,18 @@ router.get('/get', (req, res) => {
     },
     (err, data) => {
       if (`${data}` === '') {
-        console.log(req.ip, `false USER_GET: `, req.query);
+        // console.log(req.ip, `false USER_GET: `, req.query);
+        channel.emit(
+          'ConsoleText',
+          req.ip + `  false USER_GET:  ` + JSON.stringify(req.query)
+        );
         return res.status(400).json({ getUser: false });
       } else {
-        console.log(req.ip, `true USER_GET: `, req.query);
+        // console.log(req.ip, `true USER_GET: `, req.query);
+        channel.emit(
+          'ConsoleText',
+          req.ip + `  true USER_GET:  ` + JSON.stringify(req.query)
+        );
         auth.updateTokens(data._id).then(tokens => {
           return res.status(200).json(tokens);
         });

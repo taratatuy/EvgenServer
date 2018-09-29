@@ -1,5 +1,6 @@
 const express = require('express');
 const models = require('../models');
+const channel = require('../EventChannel.js');
 const router = express.Router();
 
 router.get('/createText', (req, res) => {
@@ -14,11 +15,19 @@ router.post('/create', (req, res) => {
     login: login.toString().toLowerCase()
   })
     .then(() => {
-      console.log(req.ip, `true TEXT_CREATE: `, req.body);
+      // console.log(req.ip, `true TEXT_CREATE: `, req.body);
+      channel.emit(
+        'ConsoleText',
+        req.ip + `  true TEXT_CREATE:  ` + JSON.stringify(req.body)
+      );
       res.status(201).json({ createText: true });
     })
     .catch(() => {
-      console.log(req.ip, `false TEXT_CREATE: `, req.body);
+      // console.log(req.ip, `false TEXT_CREATE: `, req.body);
+      channel.emit(
+        'ConsoleText',
+        req.ip + `  false TEXT_CREATE:  ` + JSON.stringify(req.body)
+      );
       res.status(500).json({ createText: false });
     });
 });
@@ -30,10 +39,18 @@ router.get('/get', (req, res) => {
     },
     (err, data) => {
       if (`${data}` === '') {
-        console.log(req.ip, `false TEXT_GET: `, req.query.login);
+        // console.log(req.ip, `false TEXT_GET: `, req.query.login);
+        channel.emit(
+          'ConsoleText',
+          req.ip + `  false TEXT_GET:  ` + req.query.login
+        );
         return res.status(400).json({ getText: false });
       } else {
-        console.log(req.ip, `true TEXT_GET: `, req.query.login);
+        // console.log(req.ip, `true TEXT_GET: `, req.query.login);
+        channel.emit(
+          'ConsoleText',
+          req.ip + `  true TEXT_GET:  ` + req.query.login
+        );
         var texts = [];
         data.forEach(post => {
           texts.push({

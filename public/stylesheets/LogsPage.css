@@ -1,0 +1,19 @@
+#consoleDisplay {
+  width: 900px;
+  margin: 0 auto;
+  border: 2px solid blue;
+  background: rgb(99, 98, 98);
+  color: white;
+  border-radius: 4px;
+}
+
+#consoleHead {
+  padding: 10px;
+  font: message-box;
+  border-bottom: 2px solid blue;
+}
+
+#consoleText {
+  padding: 10px;
+  font: message-box;
+}

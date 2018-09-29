@@ -4,6 +4,8 @@ Simple node.js server for mobile app.
 
 Current version and last reload you can find by pass `http://<hostAddress>/`
 
+Console output you can find by pass `http://<hostAddress>/consoleLogs`
+
 # API
 
 ## Syntax Notes
