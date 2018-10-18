@@ -64,6 +64,27 @@ router.get('/get', (req, res) => {
       }
     }
   );
+
+  router.get('/delete', (req, res) => {
+    models.TextModel.findOneAndDelete({
+      login: req.query.login.toString().toLowerCase(),
+      createdAt: req.query.createdAt
+    })
+      .then(() => {
+        channel.emit(
+          'ConsoleText',
+          `${req.ip}  true TEXT_DELETE  ` + req.query.head
+        );
+        return res.status(200).json({ textDeleted: true });
+      })
+      .catch(() => {
+        channel.emit(
+          'ConsoleText',
+          `${req.ip}  false TEXT_DELETE  ` + req.query
+        );
+        return res.status(501).json({ textDeleted: false });
+      });
+  });
 });
 
 module.exports = router;

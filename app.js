@@ -33,7 +33,7 @@ channel.on('ConsoleText', data => {
   io.emit('ConsoleText', consoleText);
 });
 
-// JS routes
+// Programm routes
 app.post('/consoleText', (req, res) => {
   // io.emit('ConsoleText', consoleText);
   res.send(consoleText);
