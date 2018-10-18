@@ -9,10 +9,12 @@ router.get('/createText', (req, res) => {
 
 router.post('/create', (req, res) => {
   const { head, body, login } = req.body;
+  const createdAt = new Date();
   models.TextModel.create({
     head: head,
     body: body,
-    login: login.toString().toLowerCase()
+    login: login.toString().toLowerCase(),
+    createdAt: createdAt.toString()
   })
     .then(() => {
       // console.log(req.ip, `true TEXT_CREATE: `, req.body);
