@@ -14,9 +14,13 @@ const text = new Schema(
     login: {
       type: String,
       required: true
+    },
+    createdAt: {
+      type: String,
+      required: true
     }
-  },
-  { timestamps: true }
+  }
+  // { timestamps: true }
 );
 
 text.set('toJSON', {
